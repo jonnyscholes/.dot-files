@@ -64,8 +64,6 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias cdtf='cd /Users/jonny/Projects/Takeflight'
-alias cdme='cd /Users/jonny/Projects/Me'
 alias edit='subl'                           # edit:         Opens any file in sublime editor
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias ~="cd ~"                              # ~:            Go Home
@@ -253,6 +251,7 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 #   -----------------------------------------------------------------------------------
     alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
 
+
 #   ---------------------------------------
 #   8.  WEB DEVELOPMENT
 #   ---------------------------------------
@@ -298,3 +297,71 @@ alias startpostgres='postgres -D /usr/local/var/postgres'
 #   e.g.: hdiutil create -size 10m 10MB.dmg
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
+
+
+#   ---------------------------------------
+#   10. Colors
+#   ---------------------------------------
+
+red=`tput setaf 1`
+green=`tput setaf 2`
+blue=`tput setaf 4`
+reset=`tput sgr0`
+
+red_b=`tput setab 1`
+green_b=`tput setab 2`
+blue_b=`tput setab 4`
+
+
+#   ---------------------------------------
+#   12. git
+#   ---------------------------------------
+
+alias gs='git status'
+alias gp='git add -p'
+alias ga='git add -A'
+function gcm() { git commit -m "$1"; }
+
+function lsgit() {
+    ls -1 | while read ln; do is_dir_gitty "$ln"; done | column -t
+}
+
+function is_dir_gitty() {
+    if [ -d "$1"/.git ]; then
+        # is git
+        local dirty=$(git -C "$1" status --porcelain 2> /dev/null)
+
+        if [[ $dirty != "" ]]; then
+            # is dirty
+            local text="${red_b}   ${reset}"
+        else
+            # is NOT dirty
+            local text="${green_b}   ${reset}"
+        fi
+    else
+         # is NOT git
+        local text="${blue_b}   ${reset}"
+    fi
+
+    printf "%s %s\n" "$(ls -lad "$1")" "$text";
+}
+
+
+#   ---------------------------------------
+#   13. Getting places
+#   ---------------------------------------
+
+function _autocomplete_path(){
+  local files=("$1$2"*)
+  [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##*/}" )
+}
+
+function _cdtf(){ _autocomplete_path /Users/jonny/Projects/Takeflight/ $2; }
+function cdtf() { cd /Users/jonny/Projects/Takeflight/$1; }
+
+complete -F _cdtf cdtf
+
+function _cdme(){ _autocomplete_path /Users/jonny/Projects/Me/ $2; }
+function cdme() { cd /Users/jonny/Projects/Me/$1; }
+
+complete -F _cdme cdme
