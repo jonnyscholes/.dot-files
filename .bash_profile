@@ -1,8 +1,10 @@
+#!/bin/sh
 #  ---------------------------------------------------------------------------
 #
 #  Description:  This file holds all my BASH configurations and aliases
 #
 #  Sections:
+#  0.   Colors
 #  1.   Environment Configuration
 #  2.   Make Terminal Better (remapping defaults and adding functionality)
 #  3.   File and Folder Management
@@ -12,8 +14,29 @@
 #  7.   System Operations & Information
 #  8.   Web Development
 #  9.   Reminders & Notes
+#  10.  Colors
+#  11.  git
+#  12.  Getting places
 #
 #  ---------------------------------------------------------------------------
+
+#   ---------------------------------------
+#   0. Colors & Icons
+#   ---------------------------------------
+
+    red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    blue=$(tput setaf 4)
+    purple=$(tput setaf 5)
+    white=$(tput setaf 7)
+    reset=$(tput sgr0)
+
+    red_b=$(tput setab 1)
+    green_b=$(tput setab 2)
+    blue_b=$(tput setab 4)
+
+    haz=$'\xe2\x98\xa3'
+    threedots=$'\xe2\x88\xb4'
 
 #   -------------------------------
 #   1.  ENVIRONMENT CONFIGURATION
@@ -21,9 +44,11 @@
 
     source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
+    GIT_PS1_SHOWDIRTYSTATE=1
+
 #   Change Prompt
 #   ------------------------------------------------------------
-     export PS1='________________________________________________________________________________\n| [\u \W$(declare -F __git_ps1 &>/dev/null && __git_ps1 " (%s)")]\$ '
+    export PS1=$'\[$red\]________________________________________________________________________________\n|\[$reset\] $threedots [\[$blue\]\u\[$reset\] \[$purple\]\W\[$reset\]\[$white\]$(__git_ps1 " (%s)")\[$reset\]]\$ '
 
 #   Set Paths
 #   ------------------------------------------------------------
@@ -43,8 +68,11 @@
 #   (this is all commented out as I use Mac Terminal Profiles)
 #   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
 #   ------------------------------------------------------------
-#   export CLICOLOR=1
-#   export LSCOLORS=ExFxBxDxCxegedabagacad
+   export CLICOLOR=1
+   export LSCOLORS=ExFxBxDxCxegedabagacad
+
+#   Fix 'xcb-shm' config path: see https://github.com/Homebrew/homebrew/issues/14123
+    export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
 
 
 #   -----------------------------
@@ -301,21 +329,7 @@ alias startelastic='elasticsearch --config=/usr/local/opt/elasticsearch/config/e
 
 
 #   ---------------------------------------
-#   10. Colors
-#   ---------------------------------------
-
-red=`tput setaf 1`
-green=`tput setaf 2`
-blue=`tput setaf 4`
-reset=`tput sgr0`
-
-red_b=`tput setab 1`
-green_b=`tput setab 2`
-blue_b=`tput setab 4`
-
-
-#   ---------------------------------------
-#   12. git
+#   10. git
 #   ---------------------------------------
 
 alias gs='git status'
@@ -349,7 +363,7 @@ function is_dir_gitty() {
 
 
 #   ---------------------------------------
-#   13. Getting places
+#   11. Getting places
 #   ---------------------------------------
 
 function _autocomplete_path(){
@@ -366,11 +380,3 @@ function _cdme(){ _autocomplete_path /Users/jonny/Projects/Me/ $2; }
 function cdme() { cd /Users/jonny/Projects/Me/$1; }
 
 complete -F _cdme cdme
-
-
-#   ---------------------------------------
-#   14. Homebrew shims
-#   ---------------------------------------
-
-# Fix 'xcb-shm' config path: see https://github.com/Homebrew/homebrew/issues/14123
-export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig

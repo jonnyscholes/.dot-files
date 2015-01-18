@@ -2,7 +2,9 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+rm ~/.bash_profile ~/.gitconfig ~/.gitignore_global ~/.vimrc
+
 ln -s $DIR/.bash_profile ~/.bash_profile
 ln -s $DIR/.gitconfig ~/.gitconfig
-ln -s $DIR/.gitconfig_global ~/.gitconfig_global
+ln -s $DIR/.gitignore_global ~/.gitignore_global
 ln -s $DIR/.vimrc ~/.vimrc
