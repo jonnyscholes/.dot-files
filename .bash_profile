@@ -396,3 +396,8 @@ function _cdme(){ _autocomplete_path /Users/jonny/Projects/Me/ $2; }
 function cdme() { cd /Users/jonny/Projects/Me/$1; }
 
 complete -F _cdme cdme
+
+function _cda(){ _autocomplete_path /Users/jonny/Projects/Art/ $2; }
+function cda() { cd /Users/jonny/Projects/Art/$1; }
+
+complete -F _cda cda
