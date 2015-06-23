@@ -26,8 +26,10 @@
 
     red=$(tput setaf 1)
     green=$(tput setaf 2)
+    yellow=$(tput setaf 3)
     blue=$(tput setaf 4)
     purple=$(tput setaf 5)
+    cyan=$(tput setaf 6)
     white=$(tput setaf 7)
     reset=$(tput sgr0)
 
@@ -45,14 +47,28 @@
     source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
     GIT_PS1_SHOWDIRTYSTATE=1
+    export CLICOLOR=1
+    export LSCOLORS=ExFxCxDxBxegedabagacad
+
+    export EDITOR=vim
+    export VISUAL=$EDITOR
 
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1=$'\[$red\]________________________________________________________________________________\n|\[$reset\] $threedots [\[$blue\]\u\[$reset\] \[$purple\]\W\[$reset\]\[$white\]$(__git_ps1 " (%s)")\[$reset\]]\$ '
+    timedate='\[$green\]\D{%Y/%m/%d}\[$reset\] \[$cyan\]\D{%I:%M:%S%p}\[$reset\]'
+    line='\[$red\]__\[$reset\]'$timedate'\[$red\]__________________________________________\n|\[$reset\] '
+    asciiart='\[$yellow\]$threedots\[$reset\]'
+    user='\[$blue\]\u\[$reset\]'
+    path='\[$purple\]\W\[$reset\]'
+    gitbit='\[$white\]$(__git_ps1 " (%s)")\[$reset\]'
+    prompt='\$ '
+    nl='\n\[$red\]|\[$reset\] '
+
+    export PS1=$line$asciiart' ['$user' '$path']'$gitbit$nl$prompt
 
 #   Set Paths
 #   ------------------------------------------------------------
-    export PATH="$PATH:/usr/local/bin/"
+    export PATH="$PATH:/usr/local/bin/:~/bin/"
     export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
