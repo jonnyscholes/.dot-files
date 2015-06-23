@@ -2,8 +2,11 @@
 	pretty = %Cblue%h%Creset %ad %Cgreen%an%Creset %s%C(yellow)%d
 [alias]
 	hist = !git log --graph --date=short --date-order ${@:---all}
+	ff = merge --ff-only
 [user]
 	name = Jonny Scholes
 	email = jonnyscholes@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
+[push]
+	default = simple
