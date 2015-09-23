@@ -17,6 +17,7 @@
 #  10.  Colors
 #  11.  git
 #  12.  Getting places
+#  13. Run on startup
 #
 #  ---------------------------------------------------------------------------
 
@@ -35,7 +36,11 @@
 
     red_b=$(tput setab 1)
     green_b=$(tput setab 2)
+    yellow_b=$(tput setab 3)
     blue_b=$(tput setab 4)
+    purple_b=$(tput setab 5)
+    cyan_b=$(tput setab 6)
+
 
     haz=$'\xe2\x98\xa3'
     threedots=$'\xe2\x88\xb4'
@@ -56,7 +61,7 @@
 #   Change Prompt
 #   ------------------------------------------------------------
     timedate='\[$green\]\D{%Y/%m/%d}\[$reset\] \[$cyan\]\D{%I:%M:%S%p}\[$reset\]'
-    line='\[$red\]__\[$reset\]'$timedate'\[$red\]__________________________________________\n|\[$reset\] '
+    line='\[$red\]|_\[$reset\]'$timedate'\[$red\]__________________________________________\n|\[$reset\] '
     asciiart='\[$yellow\]$threedots\[$reset\]'
     user='\[$blue\]\u\[$reset\]'
     path='\[$purple\]\W\[$reset\]'
@@ -401,3 +406,48 @@ function _cda(){ _autocomplete_path /Users/jonny/Projects/Art/ $2; }
 function cda() { cd /Users/jonny/Projects/Art/$1; }
 
 complete -F _cda cda
+
+function _cdc(){ _autocomplete_path /Users/jonny/Projects/Clients/ $2; }
+function cdc() { cd /Users/jonny/Projects/Clients/$1; }
+
+complete -F _cdc cdc
+
+
+#   ---------------------------------------
+#   13. Run on startup
+#   ---------------------------------------
+
+myUsed=$(df -k -m / | tail -1 | awk '{print $4}')
+lastReboot=$(who -b | awk '{print $3" "$4" "$5}')
+myLocalIp=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+
+function colorspaced() {
+  outString=""
+  for i in `seq 1 5`;
+  do
+    foo=$(( ( $RANDOM % 6 )  + 1 ))
+
+    if test "$foo" == "1"; then
+      outString="$outString$red_b $reset"
+    elif test "$foo" == "2"; then
+      outString="$outString$green_b $reset"
+    elif test "$foo" == "3"; then
+      outString="$outString$yellow_b $reset"
+    elif test "$foo" == "4"; then
+      outString="$outString$blue_b $reset"
+    elif test "$foo" == "5"; then
+      outString="$outString$purple_b $reset"
+    elif test "$foo" == "6"; then
+      outString="$outString$cyan_b $reset"
+    fi
+  done
+
+  echo $outString
+}
+
+echo $red"|________________________________________________________________"$reset
+echo $red"|"$reset
+echo $red"|"$reset $(colorspaced) " "$green"Disk Remaining:$reset $myUsed Mb"
+echo $red"|"$reset $(colorspaced) " "$green"Last Reboot:$reset $lastReboot"
+echo $red"|"$reset $(colorspaced) " "$green"Local IP:$reset $myLocalIp"
+echo $red"|"$reset
