@@ -18,6 +18,7 @@
 #  11.  git
 #  12.  Getting places
 #  13. Run on startup
+#  14. Docker
 #
 #  ---------------------------------------------------------------------------
 
@@ -49,7 +50,7 @@
 #   1.  ENVIRONMENT CONFIGURATION
 #   -------------------------------
 
-    source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
 
     GIT_PS1_SHOWDIRTYSTATE=1
     export CLICOLOR=1
@@ -57,17 +58,18 @@
 
     export EDITOR=vim
     export VISUAL=$EDITOR
+    export HISTFILESIZE=10000000
 
 #   Change Prompt
 #   ------------------------------------------------------------
     timedate='\[$green\]\D{%Y/%m/%d}\[$reset\] \[$cyan\]\D{%I:%M:%S%p}\[$reset\]'
-    line='\[$red\]|_\[$reset\]'$timedate'\[$red\]__________________________________________\n|\[$reset\] '
+    line='\[$red\]_\[$reset\]'$timedate'\[$red\]__________________________________________\n\[$reset\] '
     asciiart='\[$yellow\]$threedots\[$reset\]'
     user='\[$blue\]\u\[$reset\]'
     path='\[$purple\]\W\[$reset\]'
     gitbit='\[$white\]$(__git_ps1 " (%s)")\[$reset\]'
     prompt='\$ '
-    nl='\n\[$red\]|\[$reset\] '
+    nl='\n\[$red\]\[$reset\] '
 
     export PS1=$line$asciiart' ['$user' '$path']'$gitbit$nl$prompt
 
@@ -412,6 +414,39 @@ function cdc() { cd /Users/jonny/Projects/Clients/$1; }
 
 complete -F _cdc cdc
 
+# Complete tmux session names for `tmuxs` alias
+function _tmux-sessions {
+	local cur="${COMP_WORDS[COMP_CWORD]}"
+	COMPREPLY=()
+	COMPREPLY+=($(compgen -W "$( tmux list-sessions -F '#S' 2>/dev/null )" -- "${cur}" ))
+}
+complete -F _tmux-sessions tmuxs
+
+alias tmuxs='tmux new-session -As'
+function tmuxd {
+	if [[ $# -gt 0 ]] ; then
+		local dir=$( realpath -s "$1" )
+	else
+		local dir=$( pwd )
+	fi
+	local dirname=$( basename "$dir" )
+	tmuxs "$dirname" -c "$dir"
+}
+
+# Print out a list of unattached tmux sessions, if you are not already in one.
+function check-for-tmux {
+	if [[ -n "$TMUX" ]] ; then return ; fi
+	if ! which tmux &>/dev/null ; then return ; fi
+
+	local sessions=$( tmux -q list-sessions 2>/dev/null | grep -v '(attached)' )
+	local code=$!
+	if [[ "$code" -ne 0 ]] ; then return ; fi
+	if [[ -z "$sessions" ]] ; then return ; fi
+
+	printf "\e[1m%s\e[0m\n" "Detached tmux sessions:"
+	echo "$sessions"
+}
+
 
 #   ---------------------------------------
 #   13. Run on startup
@@ -445,9 +480,25 @@ function colorspaced() {
   echo $outString
 }
 
-echo $red"|________________________________________________________________"$reset
-echo $red"|"$reset
-echo $red"|"$reset $(colorspaced) " "$green"Disk Remaining:$reset $myUsed Mb"
-echo $red"|"$reset $(colorspaced) " "$green"Last Reboot:$reset $lastReboot"
-echo $red"|"$reset $(colorspaced) " "$green"Local IP:$reset $myLocalIp"
-echo $red"|"$reset
+echo ""
+echo " " $(colorspaced) " "$green"Disk Remaining:$reset $myUsed Mb"
+echo " " $(colorspaced) " "$green"Last Reboot:$reset $lastReboot"
+echo " " $(colorspaced) " "$green"Local IP:$reset $myLocalIp"
+echo ""
+
+check-for-tmux
+
+export NVM_DIR="/Users/jonny/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+#   ---------------------------------------
+#   14. Docker things
+#   ---------------------------------------
+
+eval $(docker-machine env)
+
+# Tidetech things
+# export TIDETECH_WEB_DOMAIN="web.tidetech.192.168.99.100.xip.io"
+# export TIDETECH_API_DOMAIN="api.tidetech.192.168.99.100.xip.io"
+# export TIDETECH_COOKIE_DOMAIN="tidetech.192.168.99.100.xip.io"

@@ -1,0 +1,209 @@
+# Brew
+android-sdk
+git
+libuv
+sane-backends
+autoconf
+glib
+lighttpd
+scons
+automake
+graphicsmagick
+little-cms
+spidermonkey
+cairo
+hdf5
+little-cms2
+szip
+cdo
+htop-osx
+m4
+texi2html
+cmake
+icu4c
+makedepend
+tmux
+couchdb
+imagemagick
+mongodb
+tree
+discount
+jasper
+mozilla-addon-sdk
+unixodbc
+e2fsprogs
+jpeg
+netcdf
+unrar
+elasticsearch
+jsonpp
+nmap
+watch
+erlang
+lame
+node
+watchman
+faac
+libevent
+nspr
+wine
+ffmpeg
+libffi
+openssl
+wxmac
+flow
+libgphoto2
+ossp-uuid
+x264
+fontconfig
+libicns
+pcre
+xvid
+freetype
+libpng
+pixman
+xz
+gd
+libtiff
+pkg-config
+yasm
+gettext
+libtool
+postgresql
+giflib
+libusb
+protobuf
+gifsicle
+libusb-compat
+readline
+
+# Other
+Adobe
+Adobe Acrobat DC
+Adobe Acrobat XI Pro
+Adobe After Effects CC 2015
+Adobe Character Animator (Preview)
+Adobe Creative Cloud
+Adobe Edge Inspect CC.app
+Adobe Illustrator CC 2015
+Adobe InDesign CC 2015
+Adobe Lightroom
+Adobe Media Encoder CC 2015
+Adobe Photoshop CC 2015
+Adobe Premiere Pro CC 2015
+App Store.app
+Arduino.app
+Atom.app
+Automator.app
+Calculator.app
+Calendar.app
+Captur.app
+Charles.app
+Chess.app
+Chromecast.app
+CleanMyMac 3.app
+Cloak.app
+Colloquy.app
+ColorSnapper2.app
+Contacts.app
+DPS App Builder.app
+DVD Player.app
+Dash.app
+Dashboard.app
+Dictionary.app
+DiskWarrior.app
+Docker
+Docker.app
+Elasty.app
+FaceTime.app
+Fetch.app
+FirefoxDeveloperEdition.app
+Flashlight.app
+Font Book.app
+Free MP4 Converter.app
+Google Chrome.app
+Google Drive.app
+Google Earth Pro.app
+Google Earth.app
+Google Photos Backup.app
+GrandPerspective.app
+HandBrake.app
+IBM
+Image Capture.app
+Karabiner.app
+Keynote.app
+LastPass.app
+Launchpad.app
+Leap Motion App Home.app
+Leap Motion Orientation.app
+Leap Motion.app
+Little Snitch Configuration.app
+Mail.app
+Maps.app
+Messages.app
+Microsoft Excel.app
+Microsoft Silverlight
+Microsoft Word.app
+MicrosoftRemoteDesktop.app
+Minecraft.app
+Miro Video Converter.app
+Mission Control.app
+MlRawViewer.app
+Mou.app
+NetNewsWire.app
+NordVPN.app
+NoteBurner M4V Converter Plus.app
+Notes.app
+Numbers.app
+OmniDiskSweeper.app
+Osmos.app
+Pages.app
+PhoneGap.app
+Photo Booth.app
+Photodesk.app
+Photomatix Pro 5.app
+Photos.app
+Pixelmator.app
+QuickTime Player.app
+Reminders.app
+Safari.app
+Satellite Eyes.app
+SiteSucker.app
+Sketch Toolbox.app
+Sketch.app
+Skype.app
+Slack.app
+SmartSwitch.app
+SpiderOakONE.app
+Steam.app
+Stickies.app
+StreamCloud.app
+StuffIt Expander.app
+Sublime Text.app
+SuperDuper!.app
+Synalyze It!.app
+System Preferences.app
+TextEdit.app
+The Guardian.app
+The Unarchiver.app
+Time Machine.app
+TunesKit for Mac.app
+UniFi-Discover.app
+Utilities
+VBA-M.app
+VideoBlend.app
+VirtualBox.app
+Visual Boy Advance
+Voila.app
+WD App Manager
+Wacom Tablet.localized
+Xcode.app
+doubleTwist.app
+iBooks.app
+iMovie.app
+iSerial Reader
+iTunes.app
+ruler.app
+uTorrent.app
+unetbootin.app
+zoom.us.app
