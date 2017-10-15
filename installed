@@ -1,209 +1,291 @@
 # Brew
 android-sdk
-git
-libuv
-sane-backends
-autoconf
-glib
-lighttpd
-scons
-automake
-graphicsmagick
-little-cms
-spidermonkey
-cairo
-hdf5
-little-cms2
-szip
-cdo
-htop-osx
-m4
-texi2html
-cmake
-icu4c
-makedepend
-tmux
-couchdb
-imagemagick
-mongodb
-tree
-discount
-jasper
-mozilla-addon-sdk
-unixodbc
-e2fsprogs
 jpeg
-netcdf
-unrar
-elasticsearch
+opencv
+autoconf
 jsonpp
-nmap
-watch
-erlang
+openexr
+automake
 lame
-node
-watchman
-faac
-libevent
-nspr
-wine
-ffmpeg
-libffi
 openssl
-wxmac
-flow
-libgphoto2
+cairo
+libevent
 ossp-uuid
-x264
-fontconfig
-libicns
+cdo
+libffi
+p11-kit
+cmake
+libgcrypt
+pandoc
+couchdb
+libgpg-error
 pcre
-xvid
-freetype
-libpng
+discount
+libgphoto2
 pixman
-xz
-gd
-libtiff
+e2fsprogs
+libicns
 pkg-config
-yasm
-gettext
-libtool
+eigen
+libmpc
 postgresql
-giflib
-libusb
+elasticsearch
+libpng
 protobuf
-gifsicle
-libusb-compat
+erlang
+libtasn1
+python3
+faac
+libtiff
+qt
+ffmpeg
+libtool
 readline
+flow
+libunistring
+ruby
+fontconfig
+libusb
+sane-backends
+freetype
+libusb-compat
+scons
+gcc
+libuv
+spidermonkey
+gd
+libxmlsec1
+sqlite
+gdbm
+libyaml
+szip
+gettext
+lighttpd
+texi2html
+giflib
+little-cms
+tmux
+gifsicle
+little-cms2
+tree
+git
+m4
+unixodbc
+glib
+makedepend
+unrar
+gmp
+mongodb
+watch
+gnu-getopt
+mono
+watchman
+gnutls
+mozilla-addon-sdk	webp
+graphicsmagick
+mpfr
+wget
+hdf5
+net-snmp
+wine
+htop-osx
+netcdf
+wxmac
+icu4c
+nettle
+x264
+ilmbase
+nmap
+xvid
+imagemagick
+node
+xz
+isl
+nspr
+yasm
+jasper
+numpy
 
-# Other
+#
+Other
 Adobe
-Adobe Acrobat DC
-Adobe Acrobat XI Pro
-Adobe After Effects CC 2015
-Adobe Character Animator (Preview)
-Adobe Creative Cloud
-Adobe Edge Inspect CC.app
-Adobe Illustrator CC 2015
-Adobe InDesign CC 2015
-Adobe Lightroom
-Adobe Media Encoder CC 2015
-Adobe Photoshop CC 2015
-Adobe Premiere Pro CC 2015
-App Store.app
-Arduino.app
-Atom.app
-Automator.app
-Calculator.app
-Calendar.app
-Captur.app
-Charles.app
-Chess.app
-Chromecast.app
-CleanMyMac 3.app
-Cloak.app
-Colloquy.app
-ColorSnapper2.app
-Contacts.app
-DPS App Builder.app
-DVD Player.app
-Dash.app
-Dashboard.app
-Dictionary.app
-DiskWarrior.app
-Docker
-Docker.app
-Elasty.app
-FaceTime.app
-Fetch.app
-FirefoxDeveloperEdition.app
-Flashlight.app
-Font Book.app
-Free MP4 Converter.app
-Google Chrome.app
-Google Drive.app
-Google Earth Pro.app
-Google Earth.app
-Google Photos Backup.app
-GrandPerspective.app
-HandBrake.app
-IBM
-Image Capture.app
-Karabiner.app
-Keynote.app
-LastPass.app
-Launchpad.app
-Leap Motion App Home.app
-Leap Motion Orientation.app
-Leap Motion.app
-Little Snitch Configuration.app
-Mail.app
-Maps.app
-Messages.app
-Microsoft Excel.app
-Microsoft Silverlight
-Microsoft Word.app
 MicrosoftRemoteDesktop.app
-Minecraft.app
-Miro Video Converter.app
+Adobe Acrobat DC
+Adobe Acrobat XI
+Adobe After Effects CC 2015
 Mission Control.app
+Adobe Character Animator (Preview)
 MlRawViewer.app
+Adobe Creative Cloud
+Monosnap.app
+Adobe Edge Inspect CC.app
 Mou.app
+Adobe Experience Design CC (Beta)
 NetNewsWire.app
+Adobe Illustrator CC 2017
 NordVPN.app
+Adobe InDesign CC 2017
 NoteBurner M4V Converter Plus.app
+Adobe Lightroom
 Notes.app
+Adobe Media Encoder CC 2015
 Numbers.app
+Adobe Photoshop CC 2015.5
 OmniDiskSweeper.app
+Adobe Premiere Pro CC 2015
+OnyX.app
+Anaconda-Navigator.app
+Opera Neon.app
+App Store.app
+Opera.app
+Application Loader.app
 Osmos.app
+Arduino.app
 Pages.app
+Atom.app
+Peggle Deluxe.app
+Automator.app
+Peggle Nights.app
+BirdFontNonCommercial.app
 PhoneGap.app
+Calculator.app
 Photo Booth.app
+Calendar.app
 Photodesk.app
+Captur.app
 Photomatix Pro 5.app
+Charles.app
 Photos.app
+Chess.app
 Pixelmator.app
+Chromecast.app
+Preview.app
+CleanMyMac 3.app
+Processing.app
+Cloak.app
 QuickTime Player.app
+CoRD.app
+RealVNC
+Colloquy.app
 Reminders.app
+ColorSnapper2.app
 Safari.app
+Contacts.app
 Satellite Eyes.app
+CraftManager.app
+Screenflick.app
+DMesh.app
+Siri.app
+DPS App Builder.app
 SiteSucker.app
+DVD Player.app
 Sketch Toolbox.app
+Dash.app
 Sketch.app
+Dashboard.app
+SketchUp 2017
+Dictionary.app
 Skype.app
+DirBuster - 0.9.10.app
 Slack.app
+DiskWarrior.app
 SmartSwitch.app
+Docker
+Soundnode.app
+Docker.app
 SpiderOakONE.app
+Dropbox.app
+Spotify.app
+Elasty.app
 Steam.app
+FaceTime.app
 Stickies.app
+Fetch.app
 StreamCloud.app
+FirefoxDeveloperEdition.app
 StuffIt Expander.app
+FirefoxNightly.app
 Sublime Text.app
+Flashlight.app
 SuperDuper!.app
+Font Book.app
 Synalyze It!.app
+Free MP4 Converter.app
 System Preferences.app
+GlobalProtect.app
 TextEdit.app
+Goofy.app
 The Guardian.app
+Google Chrome.app
 The Unarchiver.app
+Google Drive.app
 Time Machine.app
+Google Earth Pro.app
+TouchDesigner099.app
+Google Earth.app
 TunesKit for Mac.app
+Google Photos Backup.app
 UniFi-Discover.app
+GrandPerspective.app
 Utilities
+HandBrake.app
 VBA-M.app
+IBM
 VideoBlend.app
+Image Capture.app
 VirtualBox.app
+Karabiner.app
+Viscosity.app
+Keynote.app
 Visual Boy Advance
+LastPass.app
 Voila.app
-WD App Manager
+Launchpad.app
 Wacom Tablet.localized
+Leap Motion App Home.app
+WebStorm.app
+Leap Motion Orientation.app
 Xcode.app
+Leap Motion.app
 doubleTwist.app
+Little Snitch Configuration.app
 iBooks.app
+MacPAR deLuxe.app
 iMovie.app
+Mail.app
 iSerial Reader
+Maps.app
 iTunes.app
+Messages.app
 ruler.app
+Microsoft Excel.app
 uTorrent.app
+Microsoft Silverlight
 unetbootin.app
+Microsoft Word.app
 zoom.us.app
+AirspaceApps
+GrandPerspective.app
+Sublime Text 2.app
+Android File Transfer.app
+HandBrake.app
+Synergy.app
+Boom.app
+Kaleidoscope.app
+The Unarchiver.app
+Chrome Apps.localized
+LayerVault.app
+Transmit.app
+Copy.app
+PyCharm.app
+VLC.app
+Firefox.app
+Screenflick.app
+Worms Clan Wars.app
+Flash Player.app
+Scribus.app
+sdk
+Flux.app
+Slack 0.44.2.app
+Goat Simulator.app
+Spectacle.app
