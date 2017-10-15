@@ -3,6 +3,7 @@
 [alias]
 	hist = !git log --graph --date=short --date-order ${@:---all}
 	ff = merge --ff-only
+	force-push = push --force-with-lease
 [user]
 	name = Jonny Scholes
 	email = jonnyscholes@gmail.com
