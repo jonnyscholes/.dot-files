@@ -19,6 +19,7 @@
 #  12.  Getting places
 #  13. Run on startup
 #  14. Docker
+#  15. Dev helpers
 #
 #  ---------------------------------------------------------------------------
 
@@ -75,6 +76,7 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
+    export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
     export PATH="$PATH:/usr/local/bin/:~/bin/"
     export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
@@ -414,6 +416,16 @@ function cdc() { cd /Users/jonny/Projects/Clients/$1; }
 
 complete -F _cdc cdc
 
+function _cdf(){ _autocomplete_path /Users/jonny/Projects/FOMO/ $2; }
+function cdf() { cd /Users/jonny/Projects/FOMO/$1; }
+
+complete -F _cdf cdf
+
+function _cdv(){ _autocomplete_path /Users/jonny/Projects/Vibrance/ $2; }
+function cdv() { cd /Users/jonny/Projects/Vibrance/$1; }
+
+complete -F _cdv cdv
+
 # Complete tmux session names for `tmuxs` alias
 function _tmux-sessions {
 	local cur="${COMP_WORDS[COMP_CWORD]}"
@@ -493,12 +505,45 @@ export NVM_DIR="/Users/jonny/.nvm"
 
 
 #   ---------------------------------------
-#   14. Docker things
+#   15. Dev helpers
 #   ---------------------------------------
 
-eval $(docker-machine env)
+function pyatom() {
+	# Find out where the project is
+	local where='.'
+	if [[ $# -eq 1 ]] ; then
+		where="${1}"
+	fi
+	command cd "$where"
 
-# Tidetech things
-# export TIDETECH_WEB_DOMAIN="web.tidetech.192.168.99.100.xip.io"
-# export TIDETECH_API_DOMAIN="api.tidetech.192.168.99.100.xip.io"
-# export TIDETECH_COOKIE_DOMAIN="tidetech.192.168.99.100.xip.io"
+	# Ensure a venv exists
+	local venv="${where}/venv"
+	if ! [[ -e "$venv" ]] ; then
+		python3 -m venv "$venv"
+	elif ! [[ -d "$venv" ]] ; then
+		echo "$venv exists but is not a directory!"
+	fi
+
+	# Load the virtualenv and start atom
+	( source "$venv/bin/activate" ; atom "$where" )
+
+	# Install / update any requirements
+	local pip="$venv/bin/pip"
+	if [[ -e "setup.py" ]] ; then
+		"$pip" install -Ue setup.py
+	fi
+	for req in requirements.txt requirements-dev.txt ; do
+		if [[ -e "$req" ]] ; then
+			"$pip" install -Ur "$req"
+		fi
+	done
+
+}
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jonny/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/Users/jonny/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jonny/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/jonny/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+# added by Anaconda2 4.4.0 installer
+export PATH="/Users/jonny/anaconda2/bin:$PATH"
