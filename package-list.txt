@@ -1,0 +1,10 @@
+Sublime-Style-Column-Selection@1.7.4
+atom-beautify@0.30.9
+busy-signal@1.4.3
+intentions@1.1.5
+linter@2.0.0
+linter-ui-default@1.6.10
+pigments@0.40.2
+prettier-atom@0.41.0
+teletype@0.1.2
+
